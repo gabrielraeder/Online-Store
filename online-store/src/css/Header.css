@@ -8,6 +8,7 @@
   height: 100px;
   justify-content: space-around;
   width: 100%;
+  position: relative;
 }
 
 .headTitle {
@@ -33,4 +34,34 @@
   border: 1px solid #8e51c0;
   box-sizing: border-box;
   background-color: #8e51c0;
+}
+
+.cartButton {
+  position: absolute;
+  background-color: transparent;
+  font-size: 35px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: 1px solid #000000;
+  box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.2);
+  right: 20px;
+  cursor: pointer;
+}
+
+.cartQuantity {
+  cursor: pointer;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  font-size: 19px;
+  height: 27px;
+  width: 27px;
+  border-radius: 100%;
+  background-color: #d22525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 700;
 }

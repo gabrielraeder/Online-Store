@@ -16,7 +16,7 @@ export default class Header extends Component {
             handleChange={ handleChange }
             searchInput={ searchInput }
           />
-        <nav>
+        <nav className="navigation">
           <Link to="/">
             <button
               type="button"
@@ -24,16 +24,6 @@ export default class Header extends Component {
               onClick={ handleRedirect }
             >
               Página Inicial
-            </button>
-          </Link>
-          <Link to="/shopping-cart">
-            <button
-              type="button"
-              className="navButtons"
-              onClick={ handleRedirect }
-            >
-              Carrinho 🛒
-              <span data-testid="shopping-cart-size">{ cartSize }</span>
             </button>
           </Link>
           <Link to="/checkout">
@@ -45,6 +35,16 @@ export default class Header extends Component {
               Checkout
             </button>
           </Link>
+          <Link to="/shopping-cart" className="cartLink">
+              <button
+                type="button"
+                className="cartButton"
+                onClick={ handleRedirect }
+              >
+                🛒
+                <span data-testid="shopping-cart-size" className="cartQuantity">{ cartSize }</span>
+              </button>
+            </Link>
         </nav>
       </header>
     );
