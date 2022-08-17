@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import CategoryList from '../components/CategoryList';
 import Product from '../components/Product';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+// import { getProductsFromCategoryAndQuery } from '../services/api';
 import '../css/ProductList.css';
 import { getSavedCartProducts } from '../services/localStorage';
-import Header from '../components/Header';
 import { sortProducts } from '../services/helpers';
 
 export default class ProductsList extends Component {
   state = {
-    searchInput: '',
+    // searchInput: '',
     buttonClicked: false,
-    mapProducts: [],
+    // mapProducts: [],
     cartSize: 0,
     sorting: '',
     showCategory: true,
@@ -42,36 +40,36 @@ export default class ProductsList extends Component {
   }
 
   // verifica se a busca veio do input ou de um botão de categoria
-  queryOrId = async () => {
-    const { searchInput } = this.state;
-    if (searchInput.includes('MLB')) {
-      const result = await getProductsFromCategoryAndQuery(searchInput, undefined)
-        .then((data) => data);
-      return result;
-    }
-    const result = await getProductsFromCategoryAndQuery(undefined, searchInput)
-      .then((data) => data);
-    return result;
-  }
+  // queryOrId = async () => {
+  //   const { searchInput } = this.state;
+  //   if (searchInput.includes('MLB')) {
+  //     const result = await getProductsFromCategoryAndQuery(searchInput, undefined)
+  //       .then((data) => data);
+  //     return result;
+  //   }
+  //   const result = await getProductsFromCategoryAndQuery(undefined, searchInput)
+  //     .then((data) => data);
+  //   return result;
+  // }
 
-  // procura os produtos
-  // (ocorre após a função de cima)
-  searchProducts = async () => {
-    const products = await this.queryOrId()
-      .then((response) => response);
-    this.setState({
-      mapProducts: products.results,
-    });
-  }
+  // // procura os produtos
+  // // (ocorre após a função de cima)
+  // searchProducts = async () => {
+  //   const products = await this.queryOrId()
+  //     .then((response) => response);
+  //   this.setState({
+  //     mapProducts: products.results,
+  //   });
+  // }
 
-  // busca produtos por categoria
-  handleCategoryButton = async ({ target }) => {
-    const products = await getProductsFromCategoryAndQuery(target.id, undefined)
-      .then((data) => data);
-    this.setState({
-      mapProducts: products.results,
-    });
-  }
+  // // busca produtos por categoria
+  // handleCategoryButton = async ({ target }) => {
+  //   const products = await getProductsFromCategoryAndQuery(target.id, undefined)
+  //     .then((data) => data);
+  //   this.setState({
+  //     mapProducts: products.results,
+  //   });
+  // }
 
   // mapeia produtos de acordo com seletor de ordenação
   getProducts = (myProducts) => {
@@ -101,14 +99,15 @@ export default class ProductsList extends Component {
   }
 
   render() {
-    const { searchInput, buttonClicked,
-      mapProducts, cartSize, showCategory } = this.state;
+    const { buttonClicked,
+      cartSize, showCategory } = this.state;
+
+    const { handleCategoryButton, mapProducts } = this.props;
 
     const stringOfCartSize = JSON.stringify(cartSize);
-    const { history } = this.props;
 
     const categories = (<CategoryList
-      handleCategoryButton={ this.handleCategoryButton }
+      handleCategoryButton={ handleCategoryButton }
       showCategory={ showCategory }
       showCategorysFunction={ this.showCategorysFunction }
     />);
@@ -116,29 +115,28 @@ export default class ProductsList extends Component {
     return (
       <div>
         <main className="flexColumn centered main">
-          <Header hist={ history } />
 
           <section className="flex centered searchContainer">
 
             {/* input de busca */}
-            <input
+            {/* <input
               name="searchInput"
               type="text"
               value={ searchInput }
               onChange={ this.handleChange }
               data-testid="query-input"
               className="searchInput"
-            />
+            /> */}
 
             {/* botão de busca */}
-            <button
+            {/* <button
               data-testid="query-button"
               type="button"
               onClick={ this.searchProducts }
               className="queryButton"
             >
               Pesquisar
-            </button>
+            </button> */}
             {mapProducts.length > 0 && (
               <select name="sorting" id="sorting" onChange={ this.handleChange }>
                 <option value="" defaultValue="">Ordenar por:</option>
@@ -195,7 +193,3 @@ export default class ProductsList extends Component {
     );
   }
 }
-
-ProductsList.propTypes = {
-  history: PropTypes.shape().isRequired,
-};

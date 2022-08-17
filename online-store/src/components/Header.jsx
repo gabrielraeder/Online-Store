@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import '../css/Header.css';
 
 export default class Header extends Component {
-  handleGoBackButton = () => {
-    const { hist } = this.props;
-    hist.goBack();
-  };
 
   render() {
+    const { handleChange, searchProducts, searchInput, handleRedirect } = this.props;
+
     return (
       <header className="flex head">
         <h1 className="flexColumn centered headTitle"> FrontEnd Online Store</h1>
         <nav>
-          <button
-            type="button"
-            onClick={ this.handleGoBackButton }
-            className="navButtons"
-          >
-            Voltar
-          </button>
+          <SearchBar
+            searchProducts={ searchProducts }
+            handleChange={ handleChange }
+            searchInput={ searchInput }
+          />
           <Link to="/">
             <button type="button" className="navButtons">Página Inicial</button>
           </Link>
@@ -35,9 +31,3 @@ export default class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  hist: PropTypes.shape({
-    goBack: PropTypes.func,
-  }).isRequired,
-};

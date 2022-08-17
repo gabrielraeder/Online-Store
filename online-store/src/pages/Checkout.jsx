@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getSavedCartProducts } from '../services/localStorage';
 import { countCartItems } from '../services/helpers';
-import Header from '../components/Header';
 
 export default class Checkout extends Component {
   state = {
@@ -81,11 +80,8 @@ export default class Checkout extends Component {
       totalCheckoutValue,
     } = this.state;
 
-    const { history } = this.props;
-
     return (
       <div className="flexColumn centered">
-        <Header hist={ history } />
         <br />
         <fieldset>
           <legend>Revise seu pedido</legend>
