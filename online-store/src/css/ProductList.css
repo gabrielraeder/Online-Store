@@ -8,18 +8,29 @@ body {
 }
 
 .searchInput {
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
-  box-shadow: 2px 2px 2px black;
-  height: 20px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 1px solid #ced4da;
+  box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.2);
+  height: 30px;
+  padding-left: 1em;
+  font-size: 18px;
   width: 20vw;
 }
 
 .queryButton {
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: 2px 2px 2px black;
-  height: 26px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.2);
+  border: 1px solid #ced4da;
+  height: 34px;
+  transition: 0.4s;
+  font-size: 20px;
+}
+
+.queryButton:hover {
+  cursor: pointer;
+  background-color: #bfc5cb;
 }
 
 .star {

@@ -39,38 +39,6 @@ export default class ProductsList extends Component {
     this.setState({ buttonClicked: true });
   }
 
-  // verifica se a busca veio do input ou de um botão de categoria
-  // queryOrId = async () => {
-  //   const { searchInput } = this.state;
-  //   if (searchInput.includes('MLB')) {
-  //     const result = await getProductsFromCategoryAndQuery(searchInput, undefined)
-  //       .then((data) => data);
-  //     return result;
-  //   }
-  //   const result = await getProductsFromCategoryAndQuery(undefined, searchInput)
-  //     .then((data) => data);
-  //   return result;
-  // }
-
-  // // procura os produtos
-  // // (ocorre após a função de cima)
-  // searchProducts = async () => {
-  //   const products = await this.queryOrId()
-  //     .then((response) => response);
-  //   this.setState({
-  //     mapProducts: products.results,
-  //   });
-  // }
-
-  // // busca produtos por categoria
-  // handleCategoryButton = async ({ target }) => {
-  //   const products = await getProductsFromCategoryAndQuery(target.id, undefined)
-  //     .then((data) => data);
-  //   this.setState({
-  //     mapProducts: products.results,
-  //   });
-  // }
-
   // mapeia produtos de acordo com seletor de ordenação
   getProducts = (myProducts) => {
     const { sorting } = this.state;
@@ -118,25 +86,6 @@ export default class ProductsList extends Component {
 
           <section className="flex centered searchContainer">
 
-            {/* input de busca */}
-            {/* <input
-              name="searchInput"
-              type="text"
-              value={ searchInput }
-              onChange={ this.handleChange }
-              data-testid="query-input"
-              className="searchInput"
-            /> */}
-
-            {/* botão de busca */}
-            {/* <button
-              data-testid="query-button"
-              type="button"
-              onClick={ this.searchProducts }
-              className="queryButton"
-            >
-              Pesquisar
-            </button> */}
             {mapProducts.length > 0 && (
               <select name="sorting" id="sorting" onChange={ this.handleChange }>
                 <option value="" defaultValue="">Ordenar por:</option>

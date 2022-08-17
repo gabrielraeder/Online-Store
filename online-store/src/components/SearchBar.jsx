@@ -23,7 +23,7 @@ export default class SearchBar extends Component {
               onClick={ searchProducts }
               className="queryButton"
             >
-              Pesquisar
+              🔍
             </button>
 
       </div>
