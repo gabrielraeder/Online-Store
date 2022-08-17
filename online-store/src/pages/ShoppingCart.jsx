@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { getSavedCartProducts, removeAllProduct } from '../services/localStorage';
 import { countCartItems } from '../services/helpers';
 import CartProducts from '../components/CartProducts';
