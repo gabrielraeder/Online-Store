@@ -48,39 +48,39 @@ body {
 
 /* barra de categorias */
 .categoryListContainer {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 15px;
-
-  /* height: 100vh; */
-  left: 1%;
+  background-color: rgb(247, 241, 250);
+  box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
+  left: 30px;
   padding-top: 5px;
   position: fixed;
-  top: 3em;
+  top: 8em;
   width: 250px;
 }
 
 .categoryShowButton {
   background-color: white;
-  border: 1px solid black;
-  border-radius: 15px;
+  border: none;
   justify-content: space-around;
-
-  /* height: 100vh; */
-  left: 1%;
-  padding-top: 5px;
+  box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
+  left: 30px;
   position: fixed;
-  top: 4em;
+  top: 9.5em;
   width: 250px;
+  transition: 0.5s;
 }
 
 .categoryShowButton:hover {
-  background-color: rgb(237, 246, 255);
+  background-color: rgb(247, 241, 250);
+}
+
+.categoryTitle {
+  font-family: 'Michroma', sans-serif;
 }
 
 .arrowSpan {
   font-size: larger;
   transition: 500ms;
+  margin-left: 20px;
 }
 
 .arrowSpan:hover {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../css/Header.css';
 
 export default class Header extends Component {
   handleGoBackButton = () => {
@@ -10,23 +11,24 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header className="flexColumn head">
-        <h1 className="flexColumn centered"> FrontEnd Online Store</h1>
+      <header className="flex head">
+        <h1 className="flexColumn centered headTitle"> FrontEnd Online Store</h1>
         <nav>
           <button
             type="button"
             onClick={ this.handleGoBackButton }
+            className="navButtons"
           >
             Voltar
           </button>
           <Link to="/">
-            <button type="button">Página Inicial</button>
+            <button type="button" className="navButtons">Página Inicial</button>
           </Link>
           <Link to="/shopping-cart">
-            <button type="button">Carrinho</button>
+            <button type="button" className="navButtons">Carrinho</button>
           </Link>
           <Link to="/checkout">
-            <button type="button">Checkout</button>
+            <button type="button" className="navButtons">Checkout</button>
           </Link>
         </nav>
       </header>
