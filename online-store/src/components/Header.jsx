@@ -11,20 +11,38 @@ export default class Header extends Component {
     return (
       <header className="flex head">
         <h1 className="flexColumn centered headTitle"> FrontEnd Online Store</h1>
-        <nav>
           <SearchBar
             searchProducts={ searchProducts }
             handleChange={ handleChange }
             searchInput={ searchInput }
           />
+        <nav>
           <Link to="/">
-            <button type="button" className="navButtons">Página Inicial</button>
+            <button
+              type="button"
+              className="navButtons"
+              onClick={ handleRedirect }
+            >
+              Página Inicial
+            </button>
           </Link>
           <Link to="/shopping-cart">
-            <button type="button" className="navButtons">Carrinho</button>
+            <button
+              type="button"
+              className="navButtons"
+              onClick={ handleRedirect }
+            >
+              Carrinho
+            </button>
           </Link>
           <Link to="/checkout">
-            <button type="button" className="navButtons">Checkout</button>
+            <button
+              type="button"
+              className="navButtons"
+              onClick={ handleRedirect }
+            >
+              Checkout
+            </button>
           </Link>
         </nav>
       </header>
