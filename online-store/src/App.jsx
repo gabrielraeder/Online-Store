@@ -6,12 +6,23 @@ import ProductDetails from './pages/ProductDetails';
 import Checkout from './pages/Checkout';
 import Header from './components/Header';
 import { getProductsFromCategoryAndQuery } from './services/api';
+import { getSavedCartProducts } from './services/localStorage';
 
 class App extends Component {
   state = {
     searchInput: '',
     products: [],
     redirect: false,
+    cartSize: 0,
+  }
+
+  componentDidMount() {
+    this.getCartLength();
+  }
+
+  getCartLength = () => {
+    const cart = getSavedCartProducts();
+    this.setState({ cartSize: !cart ? 0 : cart.length });
   }
 
   // reconhece mudança nos inputs
@@ -67,7 +78,7 @@ class App extends Component {
   }
 
   render() {
-    const { searchInput, redirect, products } = this.state;
+    const { searchInput, redirect, products, cartSize } = this.state;
 
     return (
       <BrowserRouter>
@@ -76,6 +87,7 @@ class App extends Component {
           handleChange={ this.handleChange }
           searchInput={ searchInput }
           handleRedirect={ this.handleRedirect }
+          cartSize={ cartSize }
         />
         { redirect && <Redirect to="/"/>}
         <Switch>
@@ -96,7 +108,8 @@ class App extends Component {
             path="/"
             render={ () => (
               <ProductsList mapProducts={ products }
-                handleCategoryButton={ this.handleCategoryButton } 
+                handleCategoryButton={ this.handleCategoryButton }
+                getCartLength={ this.getCartLength }
               />) }
           />
         </Switch>

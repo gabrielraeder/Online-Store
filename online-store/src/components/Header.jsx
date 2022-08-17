@@ -6,7 +6,7 @@ import '../css/Header.css';
 export default class Header extends Component {
 
   render() {
-    const { handleChange, searchProducts, searchInput, handleRedirect } = this.props;
+    const { handleChange, searchProducts, searchInput, handleRedirect, cartSize } = this.props;
 
     return (
       <header className="flex head">
@@ -32,7 +32,8 @@ export default class Header extends Component {
               className="navButtons"
               onClick={ handleRedirect }
             >
-              Carrinho
+              Carrinho 🛒
+              <span data-testid="shopping-cart-size">{ cartSize }</span>
             </button>
           </Link>
           <Link to="/checkout">
