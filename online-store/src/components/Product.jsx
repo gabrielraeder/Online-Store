@@ -29,8 +29,8 @@ export default class Product extends Component {
           data-testid="product-detail-link"
           className="productLink"
         >
-          <h3 className="productTitle">{title}</h3>
           <img src={ thumbnail } alt={ title } className="productImage" />
+          <h3 className="productTitle">{title}</h3>
           <h2 className="productPrice">{ priceFixed }</h2>
           {freeShip && <h4 data-testid="free-shipping" className="freeShip">🚚 GRÁTIS</h4>}
         </Link>
