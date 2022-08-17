@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { getProductFromId } from '../services/api';
 import { addToCart, getSavedCartProducts } from '../services/localStorage';
 import EvaluationForm from '../components/EvaluationForm';
-import Header from '../components/Header';
 import '../css/productDetails.css';
 
 export default class ProductDetails extends Component {
@@ -76,13 +75,11 @@ export default class ProductDetails extends Component {
     const { thumbnail, title,
       price, available_quantity: avalibility, shipping } = product;
     const stringOfCartSize = JSON.stringify(cartSize);
-    const { history } = this.props;
     const priceFIX = typeof price === 'number' && `R$ ${price.toFixed(2)}`;
     const freeShip = shipping !== undefined ? shipping.free_shipping : false;
 
     return (
       <div className=" flexColumn centered productDetailsContainer">
-        <Header hist={ history } />
 
         {/* link para o carrinho */}
         <Link to="/shopping-cart">

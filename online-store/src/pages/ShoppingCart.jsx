@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { getSavedCartProducts, removeAllProduct } from '../services/localStorage';
 import { countCartItems } from '../services/helpers';
 import CartProducts from '../components/CartProducts';
-import Header from '../components/Header';
 import '../css/shoppingCart.css';
 
 export default class ShoppingCart extends Component {
@@ -56,11 +55,10 @@ export default class ShoppingCart extends Component {
         cartTotalValueCounter={ this.cartTotalValueCounter }
       />
     ));
-    const { history } = this.props;
 
     return (
       <div className="flexColumn centered">
-        <Header hist={ history } />
+
         <h2>CARRINHO</h2>
         <div className="shoppingCartContent">
           {/* condicional que mostra carrinho ou mensagem */}
