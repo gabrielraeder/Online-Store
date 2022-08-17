@@ -36,10 +36,13 @@ export default class ShoppingCart extends Component {
       cartWithCounter: countCartItems(),
     });
     this.cartTotalValueCounter();
+    const { getCartLength } = this.props;
+    getCartLength();
   };
 
   render() {
     const { cartWithCounter, totalCartValue } = this.state;
+    const { getCartLength } = this.props;
 
     const emptyCart = (
       <h2 data-testid="shopping-cart-empty-message">
@@ -53,6 +56,7 @@ export default class ShoppingCart extends Component {
         cart={ cartWithCounter }
         removeAllOfThisProduct={ this.removeAllOfThisProduct }
         cartTotalValueCounter={ this.cartTotalValueCounter }
+        getCartLength={ getCartLength }
       />
     ));
 

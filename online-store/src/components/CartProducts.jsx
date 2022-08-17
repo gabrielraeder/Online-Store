@@ -44,6 +44,8 @@ export default class CartProducts extends Component {
           disabledPlus: true,
         });
       }
+      const { getCartLength } = this.props;
+      getCartLength();
     });
   }
 
@@ -62,6 +64,8 @@ export default class CartProducts extends Component {
           disabledMinus: true,
         });
       }
+      const { getCartLength } = this.props;
+      getCartLength();
     });
   }
 

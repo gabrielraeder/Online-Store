@@ -97,7 +97,10 @@ class App extends Component {
           />
           <Route
             path="/shopping-cart"
-            component={ ShoppingCart }
+            render={ () => (
+              <ShoppingCart
+                getCartLength={ this.getCartLength }
+              />) }
           />
           <Route
             path="/checkout"
