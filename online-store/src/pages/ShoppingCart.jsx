@@ -95,7 +95,3 @@ export default class ShoppingCart extends Component {
     );
   }
 }
-
-ShoppingCart.propTypes = {
-  history: PropTypes.shape().isRequired,
-};
