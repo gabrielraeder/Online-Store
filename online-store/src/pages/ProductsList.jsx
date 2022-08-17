@@ -2,29 +2,16 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import CategoryList from '../components/CategoryList';
 import Product from '../components/Product';
-// import { getProductsFromCategoryAndQuery } from '../services/api';
 import '../css/ProductList.css';
-import { getSavedCartProducts } from '../services/localStorage';
 import { sortProducts } from '../services/helpers';
 
 export default class ProductsList extends Component {
   state = {
-    // searchInput: '',
     buttonClicked: false,
-    // mapProducts: [],
-    cartSize: 0,
     sorting: '',
     showCategory: true,
   }
 
-  componentDidMount() {
-    this.getCartLength();
-  }
-
-  getCartLength = () => {
-    const cart = getSavedCartProducts();
-    this.setState({ cartSize: !cart ? 0 : cart.length });
-  }
 
   // reconhece mudança nos inputs
   handleChange = ({ target: { name, value } }) => {
@@ -50,15 +37,16 @@ export default class ProductsList extends Component {
   }
 
   // mapeia os produtos, acionado na função getProducts
-  mapingProductElements = (myProducts) => (
-    myProducts.map((product) => (
+  mapingProductElements = (myProducts) => {
+    const { getCartLength } = this.props;
+    return myProducts.map((product) => (
       <Product
         key={ product.id }
         product={ product }
-        getCartLength={ this.getCartLength }
+        getCartLength={ getCartLength }
       />
     ))
-  )
+    }
 
   showCategorysFunction = () => {
     this.setState((prevState) => ({
@@ -68,11 +56,10 @@ export default class ProductsList extends Component {
 
   render() {
     const { buttonClicked,
-      cartSize, showCategory } = this.state;
+      showCategory } = this.state;
 
     const { handleCategoryButton, mapProducts } = this.props;
 
-    const stringOfCartSize = JSON.stringify(cartSize);
 
     const categories = (<CategoryList
       handleCategoryButton={ handleCategoryButton }
@@ -93,16 +80,6 @@ export default class ProductsList extends Component {
                 <option value="highPrice">Maior preço</option>
               </select>
             )}
-
-            {/* botão de ir ao carrinho */}
-            <button
-              type="button"
-              onClick={ this.handleClick }
-              data-testid="shopping-cart-button"
-              className="shoppingButton"
-            >
-              <span data-testid="shopping-cart-size">{ stringOfCartSize }</span>
-            </button>
 
             {/* condicional do redirecionamento */}
             {buttonClicked && <Redirect
