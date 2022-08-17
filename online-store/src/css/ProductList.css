@@ -1,0 +1,212 @@
+body {
+  position: relative;
+}
+
+.searchContainer {
+  height: 100px;
+  width: 100%;
+}
+
+.searchInput {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  box-shadow: 2px 2px 2px black;
+  height: 20px;
+  width: 20vw;
+}
+
+.queryButton {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 2px 2px 2px black;
+  height: 26px;
+}
+
+.star {
+  background-image: url('../images/uncoloredStar.png');
+  background-size: contain;
+  height: 30px;
+  margin: 5px;
+  width: 30px;
+}
+
+.colorStar {
+  background-image: url('../images/coloredStar.png');
+  background-size: contain;
+  height: 15px;
+  margin: 12.5px 5px;
+  transform: scale(1.9);
+  width: 30px;
+}
+
+.shoppingButton {
+  background-image: url('../images/cart-icon.png');
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+}
+
+/* barra de categorias */
+.categoryListContainer {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+
+  /* height: 100vh; */
+  left: 1%;
+  padding-top: 5px;
+  position: fixed;
+  top: 3em;
+  width: 250px;
+}
+
+.categoryShowButton {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  justify-content: space-around;
+
+  /* height: 100vh; */
+  left: 1%;
+  padding-top: 5px;
+  position: fixed;
+  top: 4em;
+  width: 250px;
+}
+
+.categoryShowButton:hover {
+  background-color: rgb(237, 246, 255);
+}
+
+.arrowSpan {
+  font-size: larger;
+  transition: 500ms;
+}
+
+.arrowSpan:hover {
+  color: rgb(131, 134, 137);
+  transition: 500ms;
+}
+
+.categoryNoShow {
+  display: none;
+}
+
+.categoryHeadContainer {
+  display: flex;
+}
+
+.categoryHeadContainer button {
+  background-color: transparent;
+  border: none;
+  border-radius: 75%;
+  font-size: x-large;
+  transition: 1.5s;
+}
+
+.categoryHeadContainer button:hover {
+  color: red;
+  transition: 1.5s;
+}
+
+/* botões de categoria */
+.categoryBtn {
+  background: none;
+  border: none;
+  border-top: 1px solid rgb(87, 87, 87);
+  gap: 1vh;
+  height: 40px;
+  transition: 900ms;
+  width: 200px;
+}
+
+/* container dos botões */
+.categoryButtonsContainer {
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.categoryBtn:hover {
+  background-color: rgb(237, 246, 255);
+  cursor: pointer;
+  transition: 900ms;
+}
+
+/* container dos produtos */
+.productsContainer {
+  align-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  right: 1%;
+  width: 80%;
+}
+
+/* produtos */
+.products {
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-evenly;
+  margin: 15px;
+  width: 300px;
+}
+
+/* título do produto */
+.productTitle {
+  align-items: center;
+  color: black;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 20px 5%;
+  width: 90%;
+}
+
+/* link (faz papel de container do produto) */
+.productLink {
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+/* botão do produto */
+.productButton {
+  background-color: rgb(213, 213, 213);
+  border: none;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: 1px solid black;
+  bottom: 0;
+  font-size: 17px;
+  font-weight: 700;
+  height: 40px;
+  transition: 900ms;
+  width: 100%;
+}
+
+.productButton:hover {
+  background-color: rgb(180, 180, 180);
+  cursor: pointer;
+  transition: 900ms;
+}
+
+/* preço do produto */
+.productPrice {
+  color: black;
+  margin-top: 60px;
+}
+
+/* imagem do produto */
+.productImage {
+  margin: 15px;
+}
+
+/* texto de frete grátis */
+.freeShip {
+  bottom: 40px;
+  position: absolute;
+  right: 35%;
+}

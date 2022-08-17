@@ -1,0 +1,15 @@
+.detailsPageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 500px;
+}
+
+.detailsPageContainer img {
+  width: 200px;
+}
+
+.productSection {
+  display: flex;
+  flex-direction: row;
+}
