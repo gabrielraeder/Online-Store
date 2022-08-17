@@ -171,10 +171,10 @@ export default class ProductsList extends Component {
               type="button"
               onClick={ this.showCategorysFunction }
             >
-              <h2 className="categoryTitle">
+              <h3 className="categoryTitle">
                 Exibir categorias
                 <span className="arrowSpan">▼</span>
-              </h2>
+              </h3>
             </button>) : (categories)}
 
           {/* mensagem antes da busca ser realizada */}
