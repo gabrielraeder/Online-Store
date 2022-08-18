@@ -7,12 +7,17 @@ import { getProductFromId } from '../services/api';
 export default class Product extends Component {
   state = {
     thisProduct: {},
+    picsUrls: [],
+    picNumber: 0,
   }
 
   async componentDidMount() {
     const { product } = this.props;
     this.setState({
       thisProduct: await getProductFromId(product.id),
+    }, () => {
+      const { thisProduct: { pictures } } = this.state;
+      this.setState({ picsUrls: pictures.map((pic) => pic.url)})
     })
   }
 
@@ -23,24 +28,42 @@ export default class Product extends Component {
     getCartLength();
   }
 
+  prevPicture = () => {
+    const { picsUrls } = this.state;
+    this.setState((prevState) => ({
+      picNumber: prevState.picNumber === 0 ? picsUrls.length - 1 : prevState.picNumber - 1,
+    }))
+  }
+
+  nextPicture = () => {
+    const { picsUrls } = this.state;
+    this.setState((prevState) => ({
+      picNumber: prevState.picNumber === picsUrls.length ? 0 : prevState.picNumber + 1,
+    }))
+  }
+
   render() {
-    const { thisProduct: { pictures } } = this.state;
+    const { picNumber, picsUrls } = this.state;
     const { product } = this.props;
     const { title, thumbnail, price, id, shipping } = product;
     const { free_shipping: freeShip } = shipping;
     const priceFixed = typeof price === 'number' ? `R$ ${price.toFixed(2)}` : 0;
-    const pic = pictures ? pictures[0].url : thumbnail
+    const pic = picsUrls ? picsUrls[picNumber] : thumbnail
 
     return (
 
       // produto
       <div data-testid="product" className="products">
+        <img src={ pic } alt={ title } className="productImage" />
+        <div>
+          <button className="picturesBtn" type="button" onClick={ this.prevPicture }>◀</button>
+          <button className="picturesBtn" type="button" onClick={ this.nextPicture }>▶</button>
+        </div>
         <Link
           to={ `/product-details/${id}` }
           data-testid="product-detail-link"
           className="productLink"
         >
-          <img src={ pic } alt={ title } className="productImage" />
           <h3 className="productTitle">{title}</h3>
           <h2 className="productPrice">{ priceFixed }</h2>
           {freeShip && <h4 data-testid="free-shipping" className="freeShip">🚚 GRÁTIS</h4>}
