@@ -31,7 +31,6 @@ export default class ShoppingCart extends Component {
       cartWithCounter: countCartItems(),
       totalCartValue: cartTotalValueCounter(),
     });
-    // cartTotalValueCounter();
     const { getCartLength } = this.props;
     getCartLength();
   };

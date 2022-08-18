@@ -3,12 +3,22 @@ import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import '../css/Header.css';
 import cartIcon from '../images/cartIcon.png';
+import CartPreview from '../components/CartPreview';
 
 export default class Header extends Component {
+  state = {
+    showCartPreview: false,
+  }
+
+  showCart = () => {
+    this.setState((prevState) => ({
+      showCartPreview: !prevState.showCartPreview,
+    }))
+  }
 
   render() {
     const { handleChange, searchProducts, searchInput, handleRedirect, cartSize } = this.props;
-
+    const { showCartPreview } = this.state;
     return (
       <header className="flex head">
         <Link to="/" className="titleLink">
@@ -43,11 +53,14 @@ export default class Header extends Component {
                 type="button"
                 className="cartButton"
                 onClick={ handleRedirect }
+                onMouseOver={ this.showCart }
+                onMouseLeave={ this.showCart }
               >
                 <img src={ cartIcon } alt="🛒" className="cartBtnImage" />
                 <span data-testid="shopping-cart-size" className="cartQuantity">{ cartSize }</span>
               </button>
             </Link>
+            { showCartPreview && <CartPreview /> }
         </nav>
       </header>
     );

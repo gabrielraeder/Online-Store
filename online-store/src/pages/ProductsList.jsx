@@ -4,7 +4,6 @@ import CategoryList from '../components/CategoryList';
 import Product from '../components/Product';
 import '../css/ProductList.css';
 import { sortProducts } from '../services/helpers';
-// import { getProductFromId } from '../services/api';
 
 export default class ProductsList extends Component {
   state = {
