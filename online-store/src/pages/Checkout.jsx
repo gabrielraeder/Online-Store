@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getSavedCartProducts } from '../services/localStorage';
-import { countCartItems } from '../services/helpers';
+// import { getSavedCartProducts } from '../services/localStorage';
+import { countCartItems, cartTotalValueCounter } from '../services/helpers';
 
 export default class Checkout extends Component {
   state = {
@@ -18,18 +18,10 @@ export default class Checkout extends Component {
   }
 
   componentDidMount() {
-    // recupera itens slvos ao entrar na página
-    this.setState({ cart: countCartItems() });
-    this.checkoutTotalValueCounter();
-  }
-
-  // calcula o valor total dos itens na pagina de checkout
-  checkoutTotalValueCounter = () => {
-    const totalCart = getSavedCartProducts();
-    if (!totalCart) return 0;
-    const cartPrices = totalCart.map(({ price }) => price);
-    this.setState({
-      totalCheckoutValue: cartPrices.reduce((acc, curr) => acc + curr, 0),
+    // recupera itens salvos ao entrar na página
+    this.setState({ 
+      cart: countCartItems(),
+      totalCheckoutValue: cartTotalValueCounter(),
     });
   }
 

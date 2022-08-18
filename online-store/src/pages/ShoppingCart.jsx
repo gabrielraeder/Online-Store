@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getSavedCartProducts, removeAllProduct } from '../services/localStorage';
-import { countCartItems } from '../services/helpers';
+import { removeAllProduct } from '../services/localStorage';
+import { countCartItems, cartTotalValueCounter } from '../services/helpers';
 import CartProducts from '../components/CartProducts';
 import '../css/shoppingCart.css';
 
@@ -14,18 +14,14 @@ export default class ShoppingCart extends Component {
   componentDidMount() {
     this.setState({
       cartWithCounter: countCartItems(),
+      totalCartValue: cartTotalValueCounter(),
     });
-    this.cartTotalValueCounter();
   }
 
-  // calcula o valor total dos itens no carrinho de compras e atualiza esse valor dinamicamente.
-  cartTotalValueCounter = () => {
-    const totalCart = getSavedCartProducts();
-    if (!totalCart) return 0;
-    const cartPrices = totalCart.map(({ price }) => price);
+  updateTotalCount = () => {
     this.setState({
-      totalCartValue: cartPrices.reduce((acc, curr) => acc + curr, 0),
-    });
+      totalCartValue: cartTotalValueCounter(),
+    })
   }
 
   // remove produtos e atualiza o estado
@@ -33,8 +29,9 @@ export default class ShoppingCart extends Component {
     removeAllProduct(product);
     this.setState({
       cartWithCounter: countCartItems(),
+      totalCartValue: cartTotalValueCounter(),
     });
-    this.cartTotalValueCounter();
+    // cartTotalValueCounter();
     const { getCartLength } = this.props;
     getCartLength();
   };
@@ -54,7 +51,7 @@ export default class ShoppingCart extends Component {
         product={ item }
         cart={ cartWithCounter }
         removeAllOfThisProduct={ this.removeAllOfThisProduct }
-        cartTotalValueCounter={ this.cartTotalValueCounter }
+        updateTotalCount={ this.updateTotalCount }
         getCartLength={ getCartLength }
       />
     ));

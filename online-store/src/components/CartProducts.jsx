@@ -30,13 +30,13 @@ export default class CartProducts extends Component {
 
   // adiciona produto ao carrinho já com a quantidade
   addProduct(product) {
-    const { cartTotalValueCounter } = this.props;
+    const { updateTotalCount } = this.props;
     this.setState((prevState) => ({
       count: prevState.count + 1,
       disabledMinus: false,
     }), () => {
       addToCart(product);
-      cartTotalValueCounter();
+      updateTotalCount();
       const { available_quantity: availability } = product;
       const { count } = this.state;
       if (count === availability) {
@@ -51,14 +51,14 @@ export default class CartProducts extends Component {
 
   // remove produto do carrinho
   removeProduct(product) {
-    const { cartTotalValueCounter } = this.props;
+    const { updateTotalCount } = this.props;
     this.setState((prevState) => ({
       count: prevState.count - 1,
       disabledPlus: false,
     }), () => {
       const { count } = this.state;
       removeFromCart(product);
-      cartTotalValueCounter();
+      updateTotalCount();
       if (count === 1) {
         this.setState({
           disabledMinus: true,
@@ -130,5 +130,5 @@ CartProducts.propTypes = {
     counter: PropTypes.number.isRequired,
   }).isRequired,
   removeAllOfThisProduct: PropTypes.func.isRequired,
-  cartTotalValueCounter: PropTypes.func.isRequired,
+  updateTotalCount: PropTypes.func.isRequired,
 };

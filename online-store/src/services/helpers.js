@@ -23,3 +23,11 @@ export const countCartItems = () => {
     return [...acc, newCur];
   }, []);
 };
+
+// calcula o valor total dos itens na pagina de checkout
+export const cartTotalValueCounter = () => {
+  const totalCart = getSavedCartProducts();
+  if (!totalCart) return 0;
+  const cartPrices = totalCart.map(({ price }) => price);
+  return cartPrices.reduce((acc, curr) => acc + curr, 0);
+}
