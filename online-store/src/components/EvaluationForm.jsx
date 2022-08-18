@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/App.css';
+import '../css/EvaluationForm.css';
 
 const INITIAL_STATE = {
   emailInput: '',
-  isValid: false,
+  isValid: true,
   evalInput: '',
   gradeChosen: 0,
 };
@@ -71,6 +72,10 @@ export default class EvaluationForm extends Component {
         }],
         isValid: true,
       });
+    } else {
+      this.setState({
+        isValid: false,
+      })
     }
   }
 
@@ -82,32 +87,31 @@ export default class EvaluationForm extends Component {
     if (evalResults.length > 0) items = evalResults;
 
     return (
-      <div className="flexColumn centered evalContainer">
-        <br />
-        <form className="flexColumn centered">
-
-          {/* campos para avaliar um produto */}
-          <label htmlFor="emailInput">
-            Email:
-            <input
-              required
-              name="emailInput"
-              id="emailInput"
-              value={ emailInput }
-              onChange={ this.handleChange }
-              type="text"
-              data-testid="product-detail-email"
-            />
-          </label>
-
-          <label htmlFor="gradesList">
-            Avalie o produto:
-            <div className="flex centered">{ this.evaluationGrades() }</div>
-          </label>
+      <div className="flex centered evalContainer">
+        <form className="flexColumn centered evalForm">
+          <div className="flex">
+            {/* campos para avaliar um produto */}
+            <label htmlFor="emailInput">
+              <input
+                placeholder="Seu e-mail"
+                required
+                name="emailInput"
+                id="emailInput"
+                value={ emailInput }
+                onChange={ this.handleChange }
+                type="text"
+                data-testid="product-detail-email"
+              />
+            </label>
+            <label htmlFor="gradesList">
+              <div className="flex centered">{ this.evaluationGrades() }</div>
+            </label>
+          </div>
 
           <label htmlFor="evalInput">
-            Deixe um comentário:
+    
             <textarea
+              placeholder="Deixe seu comentário"
               id="evalInput"
               name="evalInput"
               value={ evalInput }
@@ -117,6 +121,8 @@ export default class EvaluationForm extends Component {
               rows="5"
             />
           </label>
+          {/* condicional dos campos inválidos */}
+          { !isValid && <p className="invalidFields">Campos inválidos</p> }
 
           {/* botão para salvar avaliação */}
           <button
@@ -129,23 +135,22 @@ export default class EvaluationForm extends Component {
 
         </form>
 
-        {/* condicional dos campos inválidos */}
-
-        { !isValid && <p data-testid="error-msg">Campos inválidos</p> }
-
         {/* renderiza todas as avaliações */}
         <section className="savedEvals">
           { Array.isArray(evalResults) && items.map(({
             emailInput: email,
             evalInput: evalu,
             gradeChosen: grade,
-          }, ind) => (
+          }, ind) => {
+            const stars = Array(Number(grade)).fill('✭')
+            return (
             <div key={ ind }>
-              <h1 data-testid="review-card-email">{ email }</h1>
-              <h1 data-testid="review-card-evaluation">{ evalu }</h1>
-              <h1 data-testid="review-card-rating">{ grade }</h1>
+              <h5 data-testid="review-card-email">{ email }</h5>
+              <h2 data-testid="review-card-rating">{ stars }</h2>
+              <p data-testid="review-card-evaluation">{ evalu }</p>
+              <hr />
             </div>
-          ))}
+          )})}
         </section>
 
       </div>

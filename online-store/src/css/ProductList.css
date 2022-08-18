@@ -251,3 +251,8 @@ body {
   right: 35%;
   color: black;
 }
+
+.picturesBtn {
+  background-color: transparent;
+  border: none;
+}
