@@ -267,7 +267,7 @@ body {
 
 /* imagem do produto */
 .productImage {
-  margin: 15px;
+  margin: 15px auto;
   height: 200px;
   width: 200px;
   image-rendering: optimizeQuality;
