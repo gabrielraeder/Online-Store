@@ -58,18 +58,18 @@ export default class ShoppingCart extends Component {
     return (
       <div className="flexColumn centered">
 
-        <h2>CARRINHO</h2>
+        <h2 className="cartTitle">CARRINHO</h2>
         <div className="shoppingCartContent">
           {/* condicional que mostra carrinho ou mensagem */}
           <ul>{ cartWithCounter.length === 0 ? emptyCart : mapCart }</ul>
-          <div className="cartTotal">
-            <div>
-              <h3>
+          <div className="flexColumn centered cartTotal">
+            {/* <div> */}
+              <p>
                 Total:
-              </h3>
+              </p>
               <h2 className="strong">{`R$ ${totalCartValue.toFixed(2)}`}</h2>
 
-            </div>
+            {/* </div> */}
 
             {/* link para checkout */}
             <Link

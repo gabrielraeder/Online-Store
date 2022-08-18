@@ -76,35 +76,37 @@ export default class CartProducts extends Component {
     return (
       <li className="cartProduct">
 
-        <img src={ thumbnail } alt={ title } />
+        <img src={ thumbnail } alt={ title } className="cartProductImage" />
 
-        <h4 data-testid="shopping-cart-product-name">{title}</h4>
+        <h4 data-testid="shopping-cart-product-name" className="carProductTitle">{title}</h4>
 
-        {/* botão para diminuir quantidade do produto */}
-        <button
-          type="button"
-          data-testid="product-decrease-quantity"
-          onClick={ () => this.removeProduct(product) }
-          disabled={ disabledMinus }
-          className="cartButtons"
-        >
-          ➖
-        </button>
+        <div className="flex centered productCountContainer">
+          {/* botão para diminuir quantidade do produto */}
+          <button
+            type="button"
+            data-testid="product-decrease-quantity"
+            onClick={ () => this.removeProduct(product) }
+            disabled={ disabledMinus }
+            className="cartButtons"
+          >
+            ➖
+          </button>
 
-        <p data-testid="shopping-cart-product-quantity">{count}</p>
-        {/* botão para aumentar quantidade do produto */}
-        <button
-          type="button"
-          data-testid="product-increase-quantity"
-          onClick={ () => this.addProduct(product) }
-          disabled={ disabledPlus }
-          className="cartButtons"
-        >
-          ➕
-        </button>
+          <p data-testid="shopping-cart-product-quantity" className="cartProductQuantity">{count}</p>
+          {/* botão para aumentar quantidade do produto */}
+          <button
+            type="button"
+            data-testid="product-increase-quantity"
+            onClick={ () => this.addProduct(product) }
+            disabled={ disabledPlus }
+            className="cartButtons"
+          >
+            ➕
+          </button>
+        </div>
         <div className="prices">
-          <p>{`✕ ${price.toFixed(2)}`}</p>
-          <h2>{`R$ ${(count * price).toFixed(2)}`}</h2>
+          <p className="cartProductPrice">{`✕ ${price.toFixed(2)}`}</p>
+          <h3 className="productTotal">{`R$ ${(count * price).toFixed(2)}`}</h3>
         </div>
         {/* botão para excluir produto do carrinho */}
         <button
