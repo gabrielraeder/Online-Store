@@ -66,7 +66,7 @@ export default class Header extends Component {
                 <span data-testid="shopping-cart-size" className="cartQuantity">{ cartSize }</span>
               </button>
             </Link>
-            { showCartPreview && <CartPreview /> }
+            { showCartPreview && <CartPreview showCart={ this.showCart } hideCart={ this.hideCart } /> }
         </nav>
       </header>
     );
