@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { countCartItems, cartTotalValueCounter } from '../services/helpers';
 import '../css/CartPreview.css';
+import { Link } from 'react-router-dom';
 
 export default class CartPreview extends Component {
   state = {
@@ -26,13 +27,18 @@ export default class CartPreview extends Component {
         onMouseLeave={ hideCart }
       >
         <ul>
-          { cartWithCounter.map(({ thumbnail, price, counter }, i) => (
-            <li key={ i } className="cartPrevItem flex">
-              <img src={ thumbnail } alt="imagem" />
-              <div>
-                <p>{` ${ counter } x R$ ${price.toFixed(2)}`}</p>
-                <h5>{ `R$ ${(price * counter).toFixed(2)}` }</h5>
-              </div>
+          { cartWithCounter.map(({ thumbnail, price, counter, id }, i) => (
+            <li key={ i } className="flex">
+              <Link
+                to={ `/product-details/${id}` }
+                className="cartPrevItem flex"
+              >
+                <img src={ thumbnail } alt="imagem" />
+                <div>
+                  <p>{` ${ counter } x R$ ${price.toFixed(2)}`}</p>
+                  <h5>{ `R$ ${(price * counter).toFixed(2)}` }</h5>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
