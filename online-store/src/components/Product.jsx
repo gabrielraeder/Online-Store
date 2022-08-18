@@ -25,8 +25,8 @@ export default class Product extends Component {
 
   render() {
     const { thisProduct: { pictures } } = this.state;
-    let { product } = this.props;
-    let { title, thumbnail, price, id, shipping } = product;
+    const { product } = this.props;
+    const { title, thumbnail, price, id, shipping } = product;
     const { free_shipping: freeShip } = shipping;
     const priceFixed = typeof price === 'number' ? `R$ ${price.toFixed(2)}` : 0;
     const pic = pictures ? pictures[0].url : thumbnail

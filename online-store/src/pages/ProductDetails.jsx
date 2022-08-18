@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProductFromId } from '../services/api';
-import { addToCart, getSavedCartProducts } from '../services/localStorage';
+import { addToCart } from '../services/localStorage';
 import EvaluationForm from '../components/EvaluationForm';
 import '../css/productDetails.css';
 
@@ -10,20 +10,20 @@ export default class ProductDetails extends Component {
   state = {
     product: {},
     evalResults: [],
-    cartSize: 0,
     mapAttr: [],
   }
 
   async componentDidMount() {
-    this.getCartLength();
+    const { getCartLength } = this.props;
+    getCartLength();
     await this.getProduct();
     this.getSavedEvaluations();
   }
 
-  getCartLength = () => {
-    const cart = getSavedCartProducts();
-    this.setState({ cartSize: !cart ? 0 : cart.length });
-  }
+  // getCartLength = () => {
+  //   const cart = getSavedCartProducts();
+  //   this.setState({ cartSize: !cart ? 0 : cart.length });
+  // }
 
   // recupera avaliações do produto no localStorage
   // se não houver nada salva um array vazio para não dar erro
@@ -39,8 +39,9 @@ export default class ProductDetails extends Component {
   // adiciona um item no localStorage
   addToStorage = () => {
     const { product } = this.state;
+    const { getCartLength } = this.props;
     addToCart(product);
-    this.getCartLength();
+    getCartLength();
   }
 
   // faz o fetch de um item a partir
@@ -75,23 +76,12 @@ export default class ProductDetails extends Component {
     const { thumbnail, pictures, title,
       price, available_quantity: avalibility, shipping } = product;
     const stringOfCartSize = JSON.stringify(cartSize);
-    const priceFIX = typeof price === 'number' && `R$ ${price.toFixed(2)}`;
+    const priceFixed = typeof price === 'number' && `R$ ${price.toFixed(2)}`;
     const freeShip = shipping !== undefined ? shipping.free_shipping : false;
-    const pic = pictures ? pictures[0].url : thumbnail
+    const pic = pictures ? pictures[0].url : thumbnail;
 
     return (
       <div className=" flexColumn centered productDetailsContainer">
-
-        {/* link para o carrinho */}
-        <Link to="/shopping-cart">
-          <button
-            type="button"
-            data-testid="shopping-cart-button"
-          >
-            <span data-testid="shopping-cart-size">{ stringOfCartSize }</span>
-            🛒 Ir ao Carrinho
-          </button>
-        </Link>
 
         {/* detalhes do produto */}
         <section className="flexColumn centered productSection">
@@ -100,7 +90,7 @@ export default class ProductDetails extends Component {
             <h2 data-testid="product-detail-name">{ title }</h2>
             <div>
               <img src={ pic } alt={ title } data-testid="product-detail-image" />
-              <h2 data-testid="product-detail-price">{ priceFIX }</h2>
+              <h2 data-testid="product-detail-price">{ priceFixed }</h2>
             </div>
 
             <div>
@@ -113,6 +103,17 @@ export default class ProductDetails extends Component {
               >
                 Adicionar ao Carrinho
               </button>
+              <br />
+              {/* link para o carrinho */}
+              <Link to="/shopping-cart">
+                <button
+                  type="button"
+                  data-testid="shopping-cart-button"
+                >
+                  <span data-testid="shopping-cart-size">{ stringOfCartSize }</span>
+                  🛒 Ir ao Carrinho
+                </button>
+              </Link>
             </div>
 
           </div>

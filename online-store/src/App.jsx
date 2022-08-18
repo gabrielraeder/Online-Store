@@ -93,7 +93,11 @@ class App extends Component {
         <Switch>
           <Route
             path="/product-details/:id"
-            component={ ProductDetails }
+            render={ (props) => (
+              <ProductDetails
+                { ...props }
+                getCartLength={ this.getCartLength }
+              />) }
           />
           <Route
             path="/shopping-cart"
