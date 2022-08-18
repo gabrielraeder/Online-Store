@@ -42,7 +42,11 @@ export default class CartPreview extends Component {
             </li>
           ))}
         </ul>
-        <h5>{ `Total: R$ ${totalCartValue.toFixed(2)}` }</h5>
+        <Link to="/checkout">
+            <button>
+              { `Checkout: R$ ${totalCartValue.toFixed(2)}` }
+            </button>
+        </Link>
       </div>
     )
   };
