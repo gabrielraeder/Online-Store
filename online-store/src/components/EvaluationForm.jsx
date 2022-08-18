@@ -87,8 +87,7 @@ export default class EvaluationForm extends Component {
     if (evalResults.length > 0) items = evalResults;
 
     return (
-      <div className="flexColumn centered evalContainer">
-        <br />
+      <div className="flex centered evalContainer">
         <form className="flexColumn centered evalForm">
           <div className="flex">
             {/* campos para avaliar um produto */}
@@ -146,9 +145,10 @@ export default class EvaluationForm extends Component {
             const stars = Array(Number(grade)).fill('✭')
             return (
             <div key={ ind }>
-              <h1 data-testid="review-card-email">{ email }</h1>
-              <h1 data-testid="review-card-evaluation">{ evalu }</h1>
-              <h1 data-testid="review-card-rating">{ stars }</h1>
+              <h5 data-testid="review-card-email">{ email }</h5>
+              <h2 data-testid="review-card-rating">{ stars }</h2>
+              <p data-testid="review-card-evaluation">{ evalu }</p>
+              <hr />
             </div>
           )})}
         </section>

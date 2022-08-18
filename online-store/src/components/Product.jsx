@@ -38,7 +38,7 @@ export default class Product extends Component {
   nextPicture = () => {
     const { picsUrls } = this.state;
     this.setState((prevState) => ({
-      picNumber: prevState.picNumber === picsUrls.length ? 0 : prevState.picNumber + 1,
+      picNumber: prevState.picNumber === picsUrls.length - 1 ? 0 : prevState.picNumber + 1,
     }))
   }
 
