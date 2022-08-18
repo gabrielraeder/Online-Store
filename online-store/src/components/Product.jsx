@@ -50,6 +50,8 @@ export default class Product extends Component {
     const priceFixed = typeof price === 'number' ? `R$ ${price.toFixed(2)}` : 0;
     const pic = picsUrls ? picsUrls[picNumber] : thumbnail
 
+    const titleLimited = title.substring(0, 50) + '...'
+
     return (
 
       // produto
@@ -66,7 +68,7 @@ export default class Product extends Component {
           data-testid="product-detail-link"
           className="productLink"
         >
-          <h3 className="productTitle">{title}</h3>
+          <h3 className="productTitle">{titleLimited}</h3>
           <h2 className="productPrice">{ priceFixed }</h2>
           {freeShip && <h4 data-testid="free-shipping" className="freeShip">🚚 GRÁTIS</h4>}
         </Link>
