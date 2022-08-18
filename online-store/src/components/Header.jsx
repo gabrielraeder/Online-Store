@@ -11,9 +11,15 @@ export default class Header extends Component {
   }
 
   showCart = () => {
-    this.setState((prevState) => ({
-      showCartPreview: !prevState.showCartPreview,
-    }))
+    this.setState({
+      showCartPreview: true,
+    })
+  }
+
+  hideCart = () => {
+    this.setState({
+      showCartPreview: false,
+    })
   }
 
   render() {
@@ -54,7 +60,7 @@ export default class Header extends Component {
                 className="cartButton"
                 onClick={ handleRedirect }
                 onMouseOver={ this.showCart }
-                onMouseLeave={ this.showCart }
+                onMouseLeave={ this.hideCart }
               >
                 <img src={ cartIcon } alt="🛒" className="cartBtnImage" />
                 <span data-testid="shopping-cart-size" className="cartQuantity">{ cartSize }</span>

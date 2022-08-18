@@ -20,10 +20,10 @@ export default class CartPreview extends Component {
     return (
       <div>
         <ul>
-          { cartWithCounter.map(({ thumbnail, price }, i) => (
+          { cartWithCounter.map(({ thumbnail, price, counter }, i) => (
             <li key={ i }>
               <img src={ thumbnail } alt="imagem" />
-              <p>{`x ${price.toFixed(2)}`}</p>
+              <p>{`${ counter } x ${price.toFixed(2)}`}</p>
             </li>
           ))}
         </ul>
