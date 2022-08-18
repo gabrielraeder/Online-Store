@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { countCartItems, cartTotalValueCounter } from '../services/helpers';
+import '../css/CartPreview.css';
 
 export default class CartPreview extends Component {
   state = {
@@ -18,16 +19,16 @@ export default class CartPreview extends Component {
     const { cartWithCounter, totalCartValue } = this.state;
 
     return (
-      <div>
+      <div className="carPreviewContainer">
         <ul>
           { cartWithCounter.map(({ thumbnail, price, counter }, i) => (
             <li key={ i }>
               <img src={ thumbnail } alt="imagem" />
-              <p>{`${ counter } x ${price.toFixed(2)}`}</p>
+              <p>{`${ counter } x R$ ${price.toFixed(2)}`}</p>
             </li>
           ))}
         </ul>
-        <h5>{ totalCartValue }</h5>
+        <h5>{ `R$ ${totalCartValue}` }</h5>
       </div>
     )
   };
