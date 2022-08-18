@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import '../css/Header.css';
+import cartIcon from '../images/cartIcon.png';
 
 export default class Header extends Component {
 
@@ -41,7 +42,7 @@ export default class Header extends Component {
                 className="cartButton"
                 onClick={ handleRedirect }
               >
-                🛒
+                <img src={ cartIcon } alt="🛒" className="cartBtnImage" />
                 <span data-testid="shopping-cart-size" className="cartQuantity">{ cartSize }</span>
               </button>
             </Link>
