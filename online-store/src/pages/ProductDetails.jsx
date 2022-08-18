@@ -72,11 +72,12 @@ export default class ProductDetails extends Component {
 
   render() {
     const { product, evalResults, cartSize, mapAttr } = this.state;
-    const { thumbnail, title,
+    const { thumbnail, pictures, title,
       price, available_quantity: avalibility, shipping } = product;
     const stringOfCartSize = JSON.stringify(cartSize);
     const priceFIX = typeof price === 'number' && `R$ ${price.toFixed(2)}`;
     const freeShip = shipping !== undefined ? shipping.free_shipping : false;
+    const pic = pictures ? pictures[0].url : thumbnail
 
     return (
       <div className=" flexColumn centered productDetailsContainer">
@@ -98,7 +99,7 @@ export default class ProductDetails extends Component {
           <div className="detailsPageContainer">
             <h2 data-testid="product-detail-name">{ title }</h2>
             <div>
-              <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
+              <img src={ pic } alt={ title } data-testid="product-detail-image" />
               <h2 data-testid="product-detail-price">{ priceFIX }</h2>
             </div>
 
