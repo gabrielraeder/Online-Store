@@ -2,13 +2,14 @@
 
 .head {
   align-items: center;
-  background-image: linear-gradient(to right, #51197e, #811fd2 20%, rgba(116, 28, 28, 0));
+  background-image: linear-gradient(to right, #51197e 5%, #811fd2 30%, rgba(116, 28, 28, 0) 95%);
   color: white;
   font-family: 'Michroma', sans-serif;
   height: 100px;
   justify-content: space-around;
   width: 100%;
-  position: relative;
+  position: fixed;
+  z-index: 2;
 }
 
 .headTitle {
