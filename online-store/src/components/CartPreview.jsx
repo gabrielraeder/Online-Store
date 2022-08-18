@@ -35,15 +35,15 @@ export default class CartPreview extends Component {
               >
                 <img src={ thumbnail } alt="imagem" />
                 <div>
-                  <p>{` ${ counter } x R$ ${price.toFixed(2)}`}</p>
-                  <h5>{ `R$ ${(price * counter).toFixed(2)}` }</h5>
+                  <p className="previewInfo">{` ${ counter } x R$ ${price.toFixed(2)}`}</p>
+                  <h5 className="previewInfo">{ `R$ ${(price * counter).toFixed(2)}` }</h5>
                 </div>
               </Link>
             </li>
           ))}
         </ul>
         <Link to="/checkout">
-            <button>
+            <button className="previewCheckoutButton">
               { `Checkout: R$ ${totalCartValue.toFixed(2)}` }
             </button>
         </Link>

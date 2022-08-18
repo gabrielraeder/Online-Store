@@ -62,7 +62,7 @@ export default class ShoppingCart extends Component {
         <div className="shoppingCartContent">
           {/* condicional que mostra carrinho ou mensagem */}
           <ul>{ cartWithCounter.length === 0 ? emptyCart : mapCart }</ul>
-          <div className="flexColumn centered cartTotal">
+         { cartWithCounter.length !== 0 && <div className="flexColumn centered cartTotal">
             {/* <div> */}
               <p>
                 Total:
@@ -83,7 +83,7 @@ export default class ShoppingCart extends Component {
                 Finalizar compra
               </button>
             </Link>
-          </div>
+          </div>}
 
         </div>
       </div>
