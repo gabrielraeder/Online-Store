@@ -11,6 +11,8 @@ export default class ProductDetails extends Component {
     product: {},
     evalResults: [],
     mapAttr: [],
+    picsUrls: [],
+    picNumber: 0,
   }
 
   async componentDidMount() {
@@ -18,12 +20,11 @@ export default class ProductDetails extends Component {
     getCartLength();
     await this.getProduct();
     this.getSavedEvaluations();
+    const { product: { pictures } } = this.state;
+    if (pictures) {
+      this.setState({ picsUrls: pictures.map((pic) => pic.url)})
+    }
   }
-
-  // getCartLength = () => {
-  //   const cart = getSavedCartProducts();
-  //   this.setState({ cartSize: !cart ? 0 : cart.length });
-  // }
 
   // recupera avaliações do produto no localStorage
   // se não houver nada salva um array vazio para não dar erro
@@ -71,14 +72,28 @@ export default class ProductDetails extends Component {
     });
   }
 
+  prevPicture = () => {
+    const { picsUrls } = this.state;
+    this.setState((prevState) => ({
+      picNumber: prevState.picNumber === 0 ? picsUrls.length - 1 : prevState.picNumber - 1,
+    }))
+  }
+
+  nextPicture = () => {
+    const { picsUrls } = this.state;
+    this.setState((prevState) => ({
+      picNumber: prevState.picNumber === picsUrls.length ? 0 : prevState.picNumber + 1,
+    }))
+  }
+
   render() {
-    const { product, evalResults, cartSize, mapAttr } = this.state;
-    const { thumbnail, pictures, title,
+    const { product, evalResults, cartSize, mapAttr, picsUrls, picNumber } = this.state;
+    const { thumbnail, title,
       price, available_quantity: avalibility, shipping } = product;
     const stringOfCartSize = JSON.stringify(cartSize);
     const priceFixed = typeof price === 'number' && `R$ ${price.toFixed(2)}`;
     const freeShip = shipping !== undefined ? shipping.free_shipping : false;
-    const pic = pictures ? pictures[0].url : thumbnail;
+    const pic = picsUrls ? picsUrls[picNumber] : thumbnail;
 
     return (
       <div className=" flexColumn centered productDetailsContainer">
@@ -90,6 +105,10 @@ export default class ProductDetails extends Component {
             <h2 data-testid="product-detail-name">{ title }</h2>
             <div>
               <img src={ pic } alt={ title } data-testid="product-detail-image" />
+              <div>
+                <button className="picturesBtn" type="button" onClick={ this.prevPicture }>◀</button>
+                <button className="picturesBtn" type="button" onClick={ this.nextPicture }>▶</button>
+              </div>
               <h2 data-testid="product-detail-price">{ priceFixed }</h2>
             </div>
 
