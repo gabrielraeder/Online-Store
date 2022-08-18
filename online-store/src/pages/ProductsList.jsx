@@ -70,14 +70,16 @@ export default class ProductsList extends Component {
       <div>
         <main className="flexColumn centered main">
 
-          <section className="flex centered searchContainer">
+          <section className="flex searchContainer">
 
             {mapProducts.length > 0 && (
-              <select name="sorting" id="sorting" onChange={ this.handleChange }>
-                <option value="" defaultValue="">Ordenar por:</option>
-                <option value="lowPrice">Menor preço</option>
-                <option value="highPrice">Maior preço</option>
-              </select>
+              <label htmlFor="sorting" className="sortLabel">
+                Ordenar por :
+                <select name="sorting" id="sorting" className="sorting" onChange={ this.handleChange }>
+                  <option value="lowPrice">Menor preço</option>
+                  <option value="highPrice">Maior preço</option>
+                </select>
+              </label>
             )}
 
             {/* condicional do redirecionamento */}
