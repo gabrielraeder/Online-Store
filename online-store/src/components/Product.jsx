@@ -54,7 +54,9 @@ export default class Product extends Component {
 
       // produto
       <div data-testid="product" className="products">
-        <img src={ pic } alt={ title } className="productImage" />
+        <div className="flexColumn centered productImageContainer">
+          <img src={ pic } alt={ title } className="productImage" />
+        </div>
         <div>
           <button className="picturesBtn" type="button" onClick={ this.prevPicture }>◀</button>
           <button className="picturesBtn" type="button" onClick={ this.nextPicture }>▶</button>
