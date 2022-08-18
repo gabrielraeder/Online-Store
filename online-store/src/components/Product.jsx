@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addToCart } from '../services/localStorage';
+import { getProductFromId } from '../services/api';
 
 export default class Product extends Component {
+  state = {
+    thisProduct: {},
+  }
+
+  async componentDidMount() {
+    const { product } = this.props;
+    this.setState({
+      thisProduct: await getProductFromId(product.id),
+    })
+  }
+
   // adiciona produto ao carrinho
   addToStorage = () => {
     const { product, getCartLength } = this.props;
@@ -12,13 +24,12 @@ export default class Product extends Component {
   }
 
   render() {
+    const { thisProduct: { pictures } } = this.state;
     const { product } = this.props;
     const { title, thumbnail, price, id, shipping } = product;
     const { free_shipping: freeShip } = shipping;
-    let priceFixed = 0;
-    if (typeof price === 'number') {
-      priceFixed = `R$ ${price.toFixed(2)}`;
-    }
+    const priceFixed = typeof price === 'number' ? `R$ ${price.toFixed(2)}` : 0;
+    const pic = pictures ? pictures[0].url : thumbnail
 
     return (
 
@@ -29,7 +40,7 @@ export default class Product extends Component {
           data-testid="product-detail-link"
           className="productLink"
         >
-          <img src={ thumbnail } alt={ title } className="productImage" />
+          <img src={ pic } alt={ title } className="productImage" />
           <h3 className="productTitle">{title}</h3>
           <h2 className="productPrice">{ priceFixed }</h2>
           {freeShip && <h4 data-testid="free-shipping" className="freeShip">🚚 GRÁTIS</h4>}

@@ -4,6 +4,7 @@ import CategoryList from '../components/CategoryList';
 import Product from '../components/Product';
 import '../css/ProductList.css';
 import { sortProducts } from '../services/helpers';
+// import { getProductFromId } from '../services/api';
 
 export default class ProductsList extends Component {
   state = {
@@ -59,7 +60,6 @@ export default class ProductsList extends Component {
       showCategory } = this.state;
 
     const { handleCategoryButton, mapProducts } = this.props;
-
 
     const categories = (<CategoryList
       handleCategoryButton={ handleCategoryButton }

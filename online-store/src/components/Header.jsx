@@ -11,7 +11,9 @@ export default class Header extends Component {
 
     return (
       <header className="flex head">
-        <h1 className="flexColumn centered headTitle"> FrontEnd Online Store</h1>
+        <Link to="/" className="titleLink">
+          <h1 className="flexColumn centered headTitle">FrontEnd Online Store</h1>
+        </Link>
           <SearchBar
             searchProducts={ searchProducts }
             handleChange={ handleChange }

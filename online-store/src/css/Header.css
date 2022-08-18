@@ -15,6 +15,11 @@
 .headTitle {
   height: 100%;
   width: 260px;
+  color: white;
+}
+
+.titleLink {
+  text-decoration: none;
 }
 
 .navButtons {
