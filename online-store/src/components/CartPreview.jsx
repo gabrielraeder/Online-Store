@@ -17,18 +17,26 @@ export default class CartPreview extends Component {
 
   render() {
     const { cartWithCounter, totalCartValue } = this.state;
+    const { hideCart, showCart } = this.props;
 
     return (
-      <div className="carPreviewContainer">
+      <div
+        className="cartPreviewContainer flexColumn"
+        onMouseOver={ showCart }
+        onMouseLeave={ hideCart }
+      >
         <ul>
           { cartWithCounter.map(({ thumbnail, price, counter }, i) => (
-            <li key={ i }>
+            <li key={ i } className="cartPrevItem flex">
               <img src={ thumbnail } alt="imagem" />
-              <p>{`${ counter } x R$ ${price.toFixed(2)}`}</p>
+              <div>
+                <p>{` ${ counter } x R$ ${price.toFixed(2)}`}</p>
+                <h5>{ `R$ ${(price * counter).toFixed(2)}` }</h5>
+              </div>
             </li>
           ))}
         </ul>
-        <h5>{ `R$ ${totalCartValue}` }</h5>
+        <h5>{ `Total: R$ ${totalCartValue.toFixed(2)}` }</h5>
       </div>
     )
   };

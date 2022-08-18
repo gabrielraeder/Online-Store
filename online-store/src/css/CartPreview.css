@@ -1,3 +1,31 @@
-.carPreviewContainer {
+.cartPreviewContainer {
+  align-items: center;
   background-color: rgb(103, 103, 103);
+  border-radius: 5px;
+  padding-top: 70px;
+  position: absolute;
+  right: -40px;
+  top: 10px;
+  width: 18em;
+  z-index: 0;
+}
+
+.cartPreviewContainer ul {
+  padding: 0;
+}
+
+.cartPrevItem img {
+  border-radius: 100%;
+  height: 50px;
+  margin: 0 15px 15px 0;
+  width: 50px;
+}
+
+.cartPrevItem p {
+  font-size: xx-small;
+  margin-top: 0;
+}
+
+.cartPrevItem h5 {
+  margin: 0;
 }

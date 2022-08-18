@@ -54,7 +54,7 @@
   right: -30px;
   top: 20px;
   cursor: pointer;
-  /* z-index: 2; */
+  z-index: 1;
 }
 
 .cartBtnImage {
