@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { addToCart } from '../services/localStorage';
 import { getProductFromId } from '../services/api';
 
+const PHOTO_TIMER = 3500;
+
 export default class Product extends Component {
   state = {
     thisProduct: {},
@@ -19,6 +21,18 @@ export default class Product extends Component {
       const { thisProduct: { pictures } } = this.state;
       this.setState({ picsUrls: pictures.map((pic) => pic.url)})
     })
+    const { picsUrls } = this.state;
+    if (picsUrls.length > 0) {
+      this.intervalID = setInterval(() => {
+        this.setState((prevState) => ({
+          picNumber: prevState.picNumber < picsUrls.length - 1 ? prevState.picNumber + 1 : 0,
+        }) );
+      }, PHOTO_TIMER);
+    }
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
 
   // adiciona produto ao carrinho
