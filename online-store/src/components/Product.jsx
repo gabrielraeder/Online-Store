@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { addToCart } from '../services/localStorage';
 import { getProductFromId } from '../services/api';
 
-const PHOTO_TIMER = 3500;
-
 export default class Product extends Component {
   state = {
     thisProduct: {},
@@ -27,7 +25,7 @@ export default class Product extends Component {
         this.setState((prevState) => ({
           picNumber: prevState.picNumber < picsUrls.length - 1 ? prevState.picNumber + 1 : 0,
         }) );
-      }, (Math.floor(Math.random() * (5 - 2)) + 2) * 1000);
+      }, ((Math.floor(Math.random() * (6 - 2)) + 2) * 1000));
     }
   }
   
