@@ -6,6 +6,8 @@ import { addToCart } from '../services/localStorage';
 import EvaluationForm from '../components/EvaluationForm';
 import '../css/productDetails.css';
 
+const PHOTO_TIMER = 3500;
+
 export default class ProductDetails extends Component {
   state = {
     product: {},
@@ -23,7 +25,17 @@ export default class ProductDetails extends Component {
     const { product: { pictures } } = this.state;
     if (pictures) {
       this.setState({ picsUrls: pictures.map((pic) => pic.url)})
+      this.intervalID = setInterval(() => {
+        this.setState((prevState) => ({
+          picNumber: prevState.picNumber < pictures.length - 1 ? prevState.picNumber + 1 : 0,
+        }));
+      }, PHOTO_TIMER);
     }
+  
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
 
   // recupera avaliações do produto no localStorage
