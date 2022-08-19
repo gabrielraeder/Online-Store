@@ -24,9 +24,9 @@
 }
 
 .detailsInfoContainer {
-  height: 200px;
-  margin-top: 30px;
-  justify-content: space-evenly;
+  height: 250px;
+  margin-top: 70px;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -104,4 +104,18 @@
   font-family: sans-serif;
   padding-top: 15px;
   box-shadow: 1px 1px 10px 1px rgba(188, 188, 188, 0.507);
+}
+
+.savedEvals {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.productEvals {
+  margin: 20px;
 }

@@ -144,7 +144,7 @@ export default class EvaluationForm extends Component {
           }, ind) => {
             const stars = Array(Number(grade)).fill('✭')
             return (
-            <div key={ ind }>
+            <div key={ ind } className="productEvals">
               <h5 data-testid="review-card-email">{ email }</h5>
               <h2 data-testid="review-card-rating">{ stars }</h2>
               <p data-testid="review-card-evaluation">{ evalu }</p>
