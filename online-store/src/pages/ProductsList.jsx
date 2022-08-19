@@ -29,9 +29,6 @@ export default class ProductsList extends Component {
   // mapeia produtos de acordo com seletor de ordenação
   getProducts = (myProducts) => {
     const { sorting } = this.state;
-    if (sorting === '') {
-      return this.mapingProductElements(myProducts);
-    }
     const sortedProducts = sortProducts(myProducts, sorting);
     return this.mapingProductElements(sortedProducts);
   }
@@ -77,8 +74,10 @@ export default class ProductsList extends Component {
               <label htmlFor="sorting" className="sortLabel">
                 Ordenar por :
                 <select name="sorting" id="sorting" className="sorting" onChange={ this.handleChange }>
+                  <option value="rel">Relevância</option>
                   <option value="lowPrice">Menor preço</option>
                   <option value="highPrice">Maior preço</option>
+                  <option value="mostSold">Mais vendidos</option>
                 </select>
               </label>
             )}
