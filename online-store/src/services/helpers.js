@@ -1,5 +1,6 @@
 import { getSavedCartProducts } from './localStorage';
 
+// organiza a ordem de exibição dos produtos
 export const sortProducts = (myProducts, sorting) => {
   if (sorting === 'lowPrice') {
     return myProducts.sort((a, b) => a.price - b.price);

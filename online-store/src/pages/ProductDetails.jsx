@@ -69,6 +69,7 @@ export default class ProductDetails extends Component {
     });
   }
 
+  // mapeia os atributos do produto para exibição na tela
   mapAttributes = () => {
     const { product: { attributes } } = this.state;
     return attributes.map((att, i) => {
@@ -81,6 +82,7 @@ export default class ProductDetails extends Component {
     });
   }
 
+  // foto anterior
   prevPicture = () => {
     const { picsUrls } = this.state;
     this.setState((prevState) => ({
@@ -88,6 +90,7 @@ export default class ProductDetails extends Component {
     }))
   }
 
+  // proxima foto
   nextPicture = () => {
     const { picsUrls } = this.state;
     this.setState((prevState) => ({

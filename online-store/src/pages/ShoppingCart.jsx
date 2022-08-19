@@ -18,13 +18,14 @@ export default class ShoppingCart extends Component {
     });
   }
 
+  // atualiza o valor total do carrinho
   updateTotalCount = () => {
     this.setState({
       totalCartValue: cartTotalValueCounter(),
     })
   }
 
-  // remove produtos e atualiza o estado
+  // remove todos produtos iguais e atualiza o estado
   removeAllOfThisProduct = (product) => {
     removeAllProduct(product);
     this.setState({
