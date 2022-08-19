@@ -329,6 +329,8 @@ body {
   background-color: white;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.2);
   margin: 200px 20px 0 20px;
+  width: 500px;
+  min-width: 500px;
 }
 
 .paymentDataContainer {
@@ -342,22 +344,53 @@ body {
 }
 
 .checkoutInput {
-  height: 25px;
-  width: 190px;
+  height: 30px;
+  width: 180px;
   margin: 5px;
+  padding-left: 10px;
+  border: 1px solid rgba(172, 172, 172, 0.692);
 }
 
 .paymentMethodContainer {
-  height: 150px;
+  /* height: 150px; */
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 85%;
 }
 
 .paymentLabel {
-  height: 60px;
-  width: 180px;
-  margin: 10px;
+  display: flex;
+  background-color: rgba(209, 209, 209, 0.541);
+  height: 50px;
+  width: 60%;
+  margin: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paymentVisa {
+  height: 30px;
+  width: 50px;
+}
+
+.paymentImg {
+  height: 40px;
+  width: 40px;
+}
+
+.checkContainer {
+  display: flex;
+  width: 100px;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 1em;
+}
+
+.paymentLegend {
+  margin-bottom: 20px;
 }

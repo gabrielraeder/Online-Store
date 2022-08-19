@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import { getSavedCartProducts } from '../services/localStorage';
 import { countCartItems, cartTotalValueCounter } from '../services/helpers';
+import visa from '../images/visa.png';
+import ticket from '../images/ticket.png';
+import master from '../images/master.png';
+import elo from '../images/elo.png';
 
 export default class Checkout extends Component {
   state = {
@@ -93,10 +97,10 @@ export default class Checkout extends Component {
         </div>
 
         <form className="flexColumn paymentContainer">
-          <fieldset className="paymentDataContainer">
+          <div className="paymentDataContainer">
 
             {/* inputs para realização da compra */}
-            <legend>Preencha seus dados</legend>
+            <legend className="paymentLegend">Preencha seus dados</legend>
             <input
               name="name"
               value={ name }
@@ -151,60 +155,72 @@ export default class Checkout extends Component {
               onChange={ this.handleChange }
               className="checkoutInput"
             />
-          </fieldset>
-          <fieldset className="paymentMethodContainer">
+          </div>
+          <div className="paymentMethodContainer">
 
             {/* inputs para método de pagamento */}
-            <legend>Método de pagamento</legend>
+            <legend className="paymentLegend">Método de pagamento</legend>
             <label htmlFor="ticket" className="paymentLabel">
+              <div className="checkContainer">
+                <input
+                  required
+                  type="radio"
+                  name="payment"
+                  id="ticket"
+                  data-testid="ticket-payment"
+                  value="ticket"
+                  onChange={ this.handleChange }
+                />
+                <img src={ ticket } alt="Ticket" className="paymentImg" />
+              </div>
               Ticket
-              <input
-                required
-                type="radio"
-                name="payment"
-                id="ticket"
-                data-testid="ticket-payment"
-                value="ticket"
-                onChange={ this.handleChange }
-              />
             </label>
             <label htmlFor="visa" className="paymentLabel">
+              <div className="checkContainer">
+                <input
+                  required
+                  type="radio"
+                  name="payment"
+                  id="visa"
+                  data-testid="visa-payment"
+                  value="visa"
+                  onChange={ this.handleChange }
+                />
+                <img src={ visa } alt="Visa" className="paymentVisa" />
+              </div>
               Visa
-              <input
-                required
-                type="radio"
-                name="payment"
-                id="visa"
-                data-testid="visa-payment"
-                value="visa"
-                onChange={ this.handleChange }
-              />
             </label>
             <label htmlFor="master" className="paymentLabel">
+              <div className="checkContainer">
+                <input
+                  required
+                  type="radio"
+                  name="payment"
+                  id="master"
+                  data-testid="master-payment"
+                  value="master"
+                  onChange={ this.handleChange }
+                />
+                <img src={ master } alt="Master" className="paymentVisa" />
+              </div>
               Master-Card
-              <input
-                required
-                type="radio"
-                name="payment"
-                id="master"
-                data-testid="master-payment"
-                value="master"
-                onChange={ this.handleChange }
-              />
             </label>
             <label htmlFor="elo" className="paymentLabel">
+              <div className="checkContainer">
+                <input
+                  required
+                  type="radio"
+                  name="payment"
+                  id="elo"
+                  data-testid="elo-payment"
+                  value="elo"
+                  onChange={ this.handleChange }
+                />
+                <img src={ elo } alt="Elo" className="paymentImg" />
+              </div>
               Elo
-              <input
-                required
-                type="radio"
-                name="payment"
-                id="elo"
-                data-testid="elo-payment"
-                value="elo"
-                onChange={ this.handleChange }
-              />
             </label>
-          </fieldset>
+          </div>
 
           {/* botão para submeter os campos acima */}
           <button
