@@ -27,7 +27,7 @@ export default class Product extends Component {
         this.setState((prevState) => ({
           picNumber: prevState.picNumber < picsUrls.length - 1 ? prevState.picNumber + 1 : 0,
         }) );
-      }, PHOTO_TIMER);
+      }, (Math.floor(Math.random() * (5 - 2)) + 2) * 1000);
     }
   }
   
