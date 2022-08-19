@@ -13,11 +13,6 @@ const INITIAL_STATE = {
 export default class EvaluationForm extends Component {
   state = { ...INITIAL_STATE };
 
-  // componentDidMount() {
-  //   const { evals } = this.props;
-  //   this.setState({ evalResults: evals });
-  // }
-
   // altera valores dos inputs
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
@@ -58,27 +53,6 @@ export default class EvaluationForm extends Component {
   handleGradeClick = ({ target: { id } }) => this.setState({
     gradeChosen: id });
 
-  // salva avaliação do produto e limpa os campos de avaliação
-  // handleSubmitClick = () => {
-  //   const { emailInput, evalInput, gradeChosen } = this.state;
-  //   const { product, evals } = this.props;
-  //   const validate = this.validateForm();
-  //   if (validate) {
-  //     localStorage.setItem(product.id, JSON
-  //       .stringify([...evals, { emailInput, evalInput, gradeChosen }]));
-  //     this.setState({
-  //       ...INITIAL_STATE,
-  //       evalResults: [...evals, { emailInput, evalInput, gradeChosen,
-  //       }],
-  //       isValid: true,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       isValid: false,
-  //     })
-  //   }
-  // }
-  
   // salva avaliação do produto e limpa os campos de avaliação
   handleSubmitClick = () => {
     const { emailInput, evalInput, gradeChosen } = this.state;
