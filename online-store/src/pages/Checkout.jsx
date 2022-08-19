@@ -19,7 +19,7 @@ export default class Checkout extends Component {
 
   componentDidMount() {
     // recupera itens salvos ao entrar na página
-    this.setState({ 
+    this.setState({
       cart: countCartItems(),
       totalCheckoutValue: cartTotalValueCounter(),
     });
@@ -73,24 +73,27 @@ export default class Checkout extends Component {
     } = this.state;
 
     return (
-      <div className="flexColumn centered">
-        <br />
-        <fieldset>
-          <legend>Revise seu pedido</legend>
+      <div className="flex centered totalCheckoutContainer">
+        <div className="checkoutField">
+          <h2>Revise seu pedido</h2>
           {/* retorna prévia de todos os itens do carrinho */}
-          { cart.map(({ title, price, thumbnail, counter }, ind) => (
-            <li key={ ind }>
-              <h2 data-testid="shopping-cart-product-name">{ title }</h2>
-              <img src={ thumbnail } alt={ title } />
-              <p>{`Quantidade: ${counter}`}</p>
-              <h3>{ `R$ ${(counter * price).toFixed(2)}` }</h3>
-            </li>
-          )) }
+          <div className="flexColumn productsField">
+            { cart.map(({ title, price, thumbnail, counter }, ind) => (
+              <li key={ ind } className="checkoutProduct">
+                <img src={ thumbnail } alt={ title } />
+                <h2 data-testid="shopping-cart-product-name" className="cartCheckoutTitle">{ title }</h2>
+                <div className="flexColumn productCheckoutContainer">
+                  <p>{`Quantidade: ${counter}`}</p>
+                  <h3>{ `R$ ${(counter * price).toFixed(2)}` }</h3>
+                </div>
+              </li>
+            )) }
+          </div>
           <h3>{ `Total do carrinho: R$ ${totalCheckoutValue.toFixed(2)}` }</h3>
-        </fieldset>
+        </div>
 
-        <form className="flexColumn centered">
-          <fieldset>
+        <form className="flexColumn paymentContainer">
+          <fieldset className="paymentDataContainer">
 
             {/* inputs para realização da compra */}
             <legend>Preencha seus dados</legend>
@@ -101,6 +104,7 @@ export default class Checkout extends Component {
               data-testid="checkout-fullname"
               placeholder="Nome completo"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
             <input
               name="email"
@@ -109,6 +113,7 @@ export default class Checkout extends Component {
               data-testid="checkout-email"
               placeholder="Email"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
             <input
               name="cpf"
@@ -117,6 +122,7 @@ export default class Checkout extends Component {
               data-testid="checkout-cpf"
               placeholder="CPF"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
             <input
               name="phone"
@@ -125,6 +131,7 @@ export default class Checkout extends Component {
               data-testid="checkout-phone"
               placeholder="Telefone"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
             <input
               name="cep"
@@ -133,6 +140,7 @@ export default class Checkout extends Component {
               data-testid="checkout-cep"
               placeholder="CEP"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
             <input
               name="address"
@@ -141,13 +149,14 @@ export default class Checkout extends Component {
               data-testid="checkout-address"
               placeholder="Endereço"
               onChange={ this.handleChange }
+              className="checkoutInput"
             />
           </fieldset>
-          <fieldset>
+          <fieldset className="paymentMethodContainer">
 
             {/* inputs para método de pagamento */}
             <legend>Método de pagamento</legend>
-            <label htmlFor="ticket">
+            <label htmlFor="ticket" className="paymentLabel">
               Ticket
               <input
                 required
@@ -159,7 +168,7 @@ export default class Checkout extends Component {
                 onChange={ this.handleChange }
               />
             </label>
-            <label htmlFor="visa">
+            <label htmlFor="visa" className="paymentLabel">
               Visa
               <input
                 required
@@ -171,7 +180,7 @@ export default class Checkout extends Component {
                 onChange={ this.handleChange }
               />
             </label>
-            <label htmlFor="master">
+            <label htmlFor="master" className="paymentLabel">
               Master-Card
               <input
                 required
@@ -183,7 +192,7 @@ export default class Checkout extends Component {
                 onChange={ this.handleChange }
               />
             </label>
-            <label htmlFor="elo">
+            <label htmlFor="elo" className="paymentLabel">
               Elo
               <input
                 required
@@ -202,6 +211,7 @@ export default class Checkout extends Component {
             type="button"
             data-testid="checkout-btn"
             onClick={ this.handleCheckoutClick }
+            className="productDetailButtons"
           >
             Finalizar compra
           </button>

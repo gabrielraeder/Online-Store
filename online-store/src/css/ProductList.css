@@ -288,3 +288,76 @@ body {
   height: 30px;
   width: 30px;
 }
+
+/* CHECKOUT */
+
+.checkoutProduct {
+  align-items: center;
+  background-color: rgb(248, 248, 248);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2px;
+  padding: 10px;
+  width: 650px;
+  height: 80px;
+}
+
+.cartCheckoutTitle {
+  font-size: 15px;
+  height: 50px;
+  width: 400px;
+}
+
+.checkoutField {
+  margin-top: 150px;
+  max-height: 700px;
+  min-width: 690px;
+  margin-left: 50px;
+}
+
+.productsField {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.paymentContainer {
+  height: 600px;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.2);
+  margin: 200px 20px 0 20px;
+}
+
+.paymentDataContainer {
+  height: 180px;
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.checkoutInput {
+  height: 25px;
+  width: 190px;
+  margin: 5px;
+}
+
+.paymentMethodContainer {
+  height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 85%;
+}
+
+.paymentLabel {
+  height: 60px;
+  width: 180px;
+  margin: 10px;
+}
