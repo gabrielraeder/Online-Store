@@ -87,11 +87,13 @@ export default class EvaluationForm extends Component {
     if (evalResults.length > 0) items = evalResults;
 
     return (
-      <div className="flex centered evalContainer">
+      <div className="flexColumn evalContainer">
         <form className="flexColumn centered evalForm">
-          <div className="flex">
+          <h2>Avalie este produto</h2>
+          <div className="flex emailGradeContainer">
             {/* campos para avaliar um produto */}
-            <label htmlFor="emailInput">
+            <label htmlFor="emailInput" className="flexColumn centered emailLabel">
+              Email :
               <input
                 placeholder="Seu e-mail"
                 required
@@ -101,26 +103,31 @@ export default class EvaluationForm extends Component {
                 onChange={ this.handleChange }
                 type="text"
                 data-testid="product-detail-email"
+                className="emailInput"
               />
             </label>
             <label htmlFor="gradesList">
+              Nota :
               <div className="flex centered">{ this.evaluationGrades() }</div>
             </label>
           </div>
 
-          <label htmlFor="evalInput">
-    
-            <textarea
-              placeholder="Deixe seu comentário"
-              id="evalInput"
-              name="evalInput"
-              value={ evalInput }
-              onChange={ this.handleChange }
-              data-testid="product-detail-evaluation"
-              cols="50"
-              rows="5"
-            />
-          </label>
+          <div className="comentContainer">
+            <label htmlFor="evalInput" className="flexColumn centered comentLabel">
+              Comentário :
+              <textarea
+                placeholder="Deixe seu comentário"
+                id="evalInput"
+                name="evalInput"
+                value={ evalInput }
+                onChange={ this.handleChange }
+                data-testid="product-detail-evaluation"
+                cols="40"
+                rows="2"
+                className="evalInput"
+              />
+            </label>
+          </div>
           {/* condicional dos campos inválidos */}
           { !isValid && <p className="invalidFields">Campos inválidos</p> }
 
@@ -129,6 +136,7 @@ export default class EvaluationForm extends Component {
             type="button"
             data-testid="submit-review-btn"
             onClick={ this.handleSubmitClick }
+            className="productDetailButtons"
           >
             Enviar avaliação
           </button>

@@ -246,9 +246,9 @@ body {
 }
 
 .productButton:hover {
-  background-color: rgb(180, 180, 180);
+  color: white;
   cursor: pointer;
-  color: rgb(0, 30, 255);
+  background-color: #9f4ee5;
   transition: 900ms;
 }
 
@@ -285,4 +285,6 @@ body {
 .picturesBtn {
   background-color: transparent;
   border: none;
+  height: 30px;
+  width: 30px;
 }

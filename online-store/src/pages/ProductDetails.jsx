@@ -104,7 +104,9 @@ export default class ProductDetails extends Component {
           <div className="detailsPageContainer">
             <h2 data-testid="product-detail-name">{ title }</h2>
             <div>
-              <img src={ pic } alt={ title } data-testid="product-detail-image" />
+              <div className="flexColumn centered detailImageContainer">
+                <img src={ pic } alt={ title } data-testid="product-detail-image" />
+              </div>
               <div>
                 <button className="picturesBtn" type="button" onClick={ this.prevPicture }>◀</button>
                 <button className="picturesBtn" type="button" onClick={ this.nextPicture }>▶</button>
@@ -112,35 +114,38 @@ export default class ProductDetails extends Component {
               <h2 data-testid="product-detail-price">{ priceFixed }</h2>
             </div>
 
-            <div>
+            <div className="flexColumn detailsInfoContainer">
               { avalibility > 0 && <p>Estoque disponível</p> }
               { freeShip && <p>🚚 Frete Grátis</p> }
               <button
                 type="button"
                 onClick={ this.addToStorage }
                 data-testid="product-detail-add-to-cart"
+                className="productDetailButtons"
               >
                 Adicionar ao Carrinho
               </button>
-              <br />
               {/* link para o carrinho */}
               <Link to="/shopping-cart">
                 <button
                   type="button"
                   data-testid="shopping-cart-button"
+                  className="productDetailButtons"
                 >
                   <span data-testid="shopping-cart-size">{ stringOfCartSize }</span>
-                  🛒 Ir ao Carrinho
+                  Ir ao Carrinho
                 </button>
               </Link>
             </div>
 
           </div>
 
-          <fieldset className="specifications">
-            <legend><h2>Especificações Tecnicas</h2></legend>
-            { mapAttr }
-          </fieldset>
+          <div className="flexColumn centered specificationsContainer">
+            <fieldset className="specifications">
+              <legend><h2>Especificações Técnicas</h2></legend>
+              { mapAttr }
+            </fieldset>
+          </div>
 
         </section>
 
