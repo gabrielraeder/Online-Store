@@ -37,6 +37,15 @@ export default class ProductDetails extends Component {
     this.setState({ evalResults: realEval });
   }
 
+  // Salva novas avaliações no localStorage
+  handleSubmitForm = ({ emailInput, evalInput, gradeChosen }) => {
+    const { evalResults, product } = this.state;
+    localStorage.setItem(product.id, JSON
+      .stringify([...evalResults, { emailInput, evalInput, gradeChosen }]));
+
+    this.getSavedEvaluations();
+  }
+
   // adiciona um item no localStorage
   addToStorage = () => {
     const { product } = this.state;
@@ -60,6 +69,7 @@ export default class ProductDetails extends Component {
     });
   }
 
+  // mapeia os atributos do produto para exibição na tela
   mapAttributes = () => {
     const { product: { attributes } } = this.state;
     return attributes.map((att, i) => {
@@ -72,6 +82,7 @@ export default class ProductDetails extends Component {
     });
   }
 
+  // foto anterior
   prevPicture = () => {
     const { picsUrls } = this.state;
     this.setState((prevState) => ({
@@ -79,6 +90,7 @@ export default class ProductDetails extends Component {
     }))
   }
 
+  // proxima foto
   nextPicture = () => {
     const { picsUrls } = this.state;
     this.setState((prevState) => ({
@@ -153,6 +165,7 @@ export default class ProductDetails extends Component {
         <EvaluationForm
           product={ product }
           evals={ evalResults }
+          handleSubmitForm={ this.handleSubmitForm }
         />
       </div>
     );

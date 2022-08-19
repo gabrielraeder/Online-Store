@@ -9,7 +9,7 @@ export default class ProductsList extends Component {
   state = {
     buttonClicked: false,
     sorting: '',
-    showCategory: true,
+    showCategory: false,
   }
 
 
@@ -48,6 +48,7 @@ export default class ProductsList extends Component {
     ))
     }
 
+  // controla a aparição da aba de categorias
   showCategorysFunction = () => {
     this.setState((prevState) => ({
       showCategory: !prevState.showCategory,

@@ -96,3 +96,11 @@
 .cartTotal button:hover {
   transform: scale(1.05);
 }
+
+.trashIcon {
+  color: red;
+}
+
+.trashIcon:hover {
+  color: rgb(132, 35, 35);
+}

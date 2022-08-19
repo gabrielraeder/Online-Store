@@ -11,12 +11,12 @@ const INITIAL_STATE = {
 };
 
 export default class EvaluationForm extends Component {
-  state = { ...INITIAL_STATE, evalResults: [] };
+  state = { ...INITIAL_STATE };
 
-  componentDidMount() {
-    const { evals } = this.props;
-    this.setState({ evalResults: evals });
-  }
+  // componentDidMount() {
+  //   const { evals } = this.props;
+  //   this.setState({ evalResults: evals });
+  // }
 
   // altera valores dos inputs
   handleChange = ({ target: { name, value } }) => {
@@ -59,19 +59,37 @@ export default class EvaluationForm extends Component {
     gradeChosen: id });
 
   // salva avaliação do produto e limpa os campos de avaliação
+  // handleSubmitClick = () => {
+  //   const { emailInput, evalInput, gradeChosen } = this.state;
+  //   const { product, evals } = this.props;
+  //   const validate = this.validateForm();
+  //   if (validate) {
+  //     localStorage.setItem(product.id, JSON
+  //       .stringify([...evals, { emailInput, evalInput, gradeChosen }]));
+  //     this.setState({
+  //       ...INITIAL_STATE,
+  //       evalResults: [...evals, { emailInput, evalInput, gradeChosen,
+  //       }],
+  //       isValid: true,
+  //     });
+  //   } else {
+  //     this.setState({
+  //       isValid: false,
+  //     })
+  //   }
+  // }
+  
+  // salva avaliação do produto e limpa os campos de avaliação
   handleSubmitClick = () => {
     const { emailInput, evalInput, gradeChosen } = this.state;
-    const { product, evals } = this.props;
+    const { handleSubmitForm } = this.props;
     const validate = this.validateForm();
     if (validate) {
-      localStorage.setItem(product.id, JSON
-        .stringify([...evals, { emailInput, evalInput, gradeChosen }]));
+      handleSubmitForm({ emailInput, evalInput, gradeChosen })
       this.setState({
         ...INITIAL_STATE,
-        evalResults: [...evals, { emailInput, evalInput, gradeChosen,
-        }],
         isValid: true,
-      });
+      })
     } else {
       this.setState({
         isValid: false,
@@ -80,11 +98,11 @@ export default class EvaluationForm extends Component {
   }
 
   render() {
-    const { emailInput, evalInput, evalResults, isValid } = this.state;
+    const { emailInput, evalInput, isValid } = this.state;
     const { evals } = this.props;
 
-    let items = evals;
-    if (evalResults.length > 0) items = evalResults;
+    // let items = evals;
+    // if (evalResults.length > 0) items = evalResults;
 
     return (
       <div className="flexColumn evalContainer">
@@ -145,7 +163,7 @@ export default class EvaluationForm extends Component {
 
         {/* renderiza todas as avaliações */}
         <section className="savedEvals">
-          { Array.isArray(evalResults) && items.map(({
+          { Array.isArray(evals) && evals.map(({
             emailInput: email,
             evalInput: evalu,
             gradeChosen: grade,

@@ -32,6 +32,7 @@ class App extends Component {
     });
   }
 
+  // handler do redirect para "/" ao pesquisar por novo produto em qualquer pagina
   handleRedirect = () => {
     this.setState({
       redirect: false,
@@ -40,7 +41,6 @@ class App extends Component {
 
   // verifica se a busca veio do input ou de um botão de categoria
   queryOrId = async (searchInput) => {
-    // const { searchInput } = this.state;
     if (searchInput.includes('MLB')) {
       const result = await getProductsFromCategoryAndQuery(searchInput, undefined)
         .then((data) => data);
