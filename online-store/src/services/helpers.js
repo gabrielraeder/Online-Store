@@ -4,8 +4,12 @@ import { getSavedCartProducts } from './localStorage';
 export const sortProducts = (myProducts, sorting) => {
   if (sorting === 'lowPrice') {
     return myProducts.sort((a, b) => a.price - b.price);
+  } else if (sorting === 'highPrice') {
+    return myProducts.sort((a, b) => b.price - a.price);
+  } else if (sorting === 'mostSold') {
+    return myProducts.sort((a, b) => b.sold_quantity - a.sold_quantity);
   }
-  return myProducts.sort((a, b) => b.price - a.price);
+  return myProducts;
 };
 
 // recebe array de produtos salvos,
