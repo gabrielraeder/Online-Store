@@ -37,6 +37,7 @@ export default class ProductDetails extends Component {
     this.setState({ evalResults: realEval });
   }
 
+  // Salva novas avaliações no localStorage
   handleSubmitForm = ({ emailInput, evalInput, gradeChosen }) => {
     const { evalResults, product } = this.state;
     localStorage.setItem(product.id, JSON

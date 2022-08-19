@@ -78,6 +78,8 @@ export default class EvaluationForm extends Component {
   //     })
   //   }
   // }
+  
+  // salva avaliação do produto e limpa os campos de avaliação
   handleSubmitClick = () => {
     const { emailInput, evalInput, gradeChosen } = this.state;
     const { handleSubmitForm } = this.props;

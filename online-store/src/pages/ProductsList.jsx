@@ -9,7 +9,7 @@ export default class ProductsList extends Component {
   state = {
     buttonClicked: false,
     sorting: '',
-    showCategory: true,
+    showCategory: false,
   }
 
 
