@@ -37,6 +37,14 @@ export default class ProductDetails extends Component {
     this.setState({ evalResults: realEval });
   }
 
+  handleSubmitForm = ({ emailInput, evalInput, gradeChosen }) => {
+    const { evalResults, product } = this.state;
+    localStorage.setItem(product.id, JSON
+      .stringify([...evalResults, { emailInput, evalInput, gradeChosen }]));
+
+    this.getSavedEvaluations();
+  }
+
   // adiciona um item no localStorage
   addToStorage = () => {
     const { product } = this.state;
@@ -148,6 +156,7 @@ export default class ProductDetails extends Component {
         <EvaluationForm
           product={ product }
           evals={ evalResults }
+          handleSubmitForm={ this.handleSubmitForm }
         />
       </div>
     );
